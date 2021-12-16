@@ -5,8 +5,8 @@ from accounts.models import TimeStamp
 
 class ResultProfile(TimeStamp):
 
-    rollNumber = models.IntegerField(verbose_name='Roll Number')
-    regiNumber = models.IntegerField(verbose_name='Regi Number')
+    rollNumber = models.IntegerField(verbose_name='Roll Number',unique=True,null=True)
+    regiNumber = models.IntegerField(verbose_name='Regi Number',null=True)
     
     name = models.CharField(max_length=200,null=True,blank=True,verbose_name='Applicant Name')
     fName = models.CharField(max_length=200, null=True,blank=True,verbose_name='Applicant Father`s Name')
