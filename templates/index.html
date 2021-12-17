@@ -1,0 +1,6 @@
+hello
+<form action="{% url 'result' %}" method="POST">
+    {% csrf_token %}
+    <input type="number" placeholder="Type the Roll Number" name="roll">
+    <input type="submit">
+</form>

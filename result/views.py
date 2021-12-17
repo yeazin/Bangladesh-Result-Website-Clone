@@ -1,3 +1,26 @@
+
+from django.http import HttpResponse
 from django.shortcuts import render
 
+from result.models.result import ResultProfile
+
 # Create your views here.
+from django.views import View
+
+
+# Getting the Result profile
+
+class GetResultView(View):
+    def get(self,request):
+        return render(request,'index.html')
+
+    def post(self,request):
+        getRoll = request.POST.get('roll')
+
+        match = ResultProfile.objects.filter(rollNumber= getRoll)
+        
+        if match:
+
+            return HttpResponse('<h2>You Find the Current One</h2>')
+        else:
+            return HttpResponse('<h2>Query didnt Match</h2>')
