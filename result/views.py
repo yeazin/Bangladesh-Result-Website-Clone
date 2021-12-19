@@ -12,9 +12,15 @@ from django.views import View
 
 class GetResultView(View):
     def get(self,request):
-        getRoll = request.GET['roll']
+        #getRoll = request.GET['roll']
+        getRoll = request.GET.get('roll')
+        getRegi = request.GET.get('regi')
+        className = request.GET.get('class')
 
-        match = ResultProfile.objects.filter(rollNumber= getRoll).first()
+        match = ResultProfile.objects.filter(rollNumber= getRoll).\
+                                    filter(regiNumber=getRegi).\
+                                    filter(className=className)\
+                                    .first()
         context = {}
         if match:
             context = {
