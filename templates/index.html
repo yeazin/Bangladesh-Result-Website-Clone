@@ -2,7 +2,14 @@ hello
 <form action="{% url 'result' %}" method="GET">
     
     <input type="number" placeholder="Type the Roll Number" name="roll">
+    <input type="number" placeholder="Type the Regi Number" name="regi">
     <input type="submit">
 </form>
 
-<!-- {{ match.id }} -->
+{% if match %}
+{{ match.id }}
+{{ match.name }}
+
+{% else %}
+<h2>Query Doesn`t match </h2>
+{% endif %}
