@@ -3,8 +3,22 @@ hello
     
     <input type="number" placeholder="Type the Roll Number" name="roll">
     <input type="number" placeholder="Type the Regi Number" name="regi">
+
+    <select aria-placeholder="Select year" name="year">
+        {% for y in year %}
+        <option> {{ y }} </option>
+        {% endfor %}
+
+      </select>
+
+
+
     <input type="submit">
+
+
+
 </form>
+
 
 {% if match %}
 {{ match.id }}

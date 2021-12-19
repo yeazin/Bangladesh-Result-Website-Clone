@@ -1,7 +1,7 @@
 from django.db import models
 
 from accounts.models import TimeStamp
-
+from result.models.initial import Year
 
 class ResultProfile(TimeStamp):
 
@@ -16,7 +16,7 @@ class ResultProfile(TimeStamp):
     className = models.CharField(max_length=100,null=True,blank=True,verbose_name='Class Name')
     groupName = models.CharField(max_length=100,blank=True,null=True,verbose_name='Group Name')
 
-
+    year = models.ForeignKey(Year,on_delete=models.CASCADE,null=True, verbose_name='Session year')
 
 
     def __str__(self):

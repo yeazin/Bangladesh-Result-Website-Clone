@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from result.models.result import ResultProfile
+from result.models.initial import Year
 
 # Create your views here.
 from django.views import View
@@ -16,16 +17,25 @@ class GetResultView(View):
         getRoll = request.GET.get('roll')
         getRegi = request.GET.get('regi')
         className = request.GET.get('class')
+        year = request.GET.get('year')
+
+        context = {
+            'year':Year.objects.all().order_by('-id'),
+        }
+        
 
         match = ResultProfile.objects.filter(rollNumber= getRoll).\
                                     filter(regiNumber=getRegi).\
-                                    filter(className=className)\
+                                    filter(className=className).\
+                                    filter(year__year=year)\
                                     .first()
-        context = {}
+        
         if match:
-            context = {
-                'match':match
+            contextt = {
+                'match':match,
+                
             }
+            context.update(contextt)
         # else :
         #     noMath = match.none()
 
