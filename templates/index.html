@@ -1,8 +1,13 @@
-hello
-<form action="{% url 'result' %}" method="GET">
+
+<style>
+
+</style>
+
+<body>
+  <form action="{% url 'result' %}" method="GET">
     
-    <input type="number" placeholder="Type the Roll Number" name="roll">
-    <input type="number" placeholder="Type the Regi Number" name="regi">
+    <input type="number" placeholder="Type the Roll Number" name="roll" required>
+    <input type="number" placeholder="Type the Regi Number" name="regi" required>
 
     <select aria-placeholder="Select year" name="year">
         {% for y in year %}
@@ -26,4 +31,5 @@ hello
 
 {% else %}
 <h2>Query Doesn`t match </h2>
-{% endif %}
+{% endif %} 
+</body>

@@ -31,11 +31,11 @@ class GetResultView(View):
                                     .first()
         
         if match:
-            contextt = {
+            Match_context = {
                 'match':match,
                 
             }
-            context.update(contextt)
+            context.update(Match_context)
         # else :
         #     noMath = match.none()
 
@@ -52,3 +52,8 @@ class GetResultView(View):
         #     return HttpResponse('<h2>You Find the Current One</h2>')
         # else:
         #     return HttpResponse('<h2>Query didnt Match</h2>')
+
+
+
+def Home(request):
+    return render(request,'home.html')
