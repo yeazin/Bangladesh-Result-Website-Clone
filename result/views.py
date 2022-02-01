@@ -13,33 +13,37 @@ from django.views import View
 
 class GetResultView(View):
     def get(self,request):
-        #getRoll = request.GET['roll']
-        getRoll = request.GET.get('roll')
-        getRegi = request.GET.get('regi')
-        className = request.GET.get('class')
-        year = request.GET.get('year')
+        if request.is_ajax and request.method == "GET":
 
-        context = {
-            'year':Year.objects.all().order_by('-id'),
-        }
-        
+            #getRoll = request.GET['roll']
+            getRoll = request.GET.get('roll')
+            getRegi = request.GET.get('regi')
+            className = request.GET.get('class')
+            year = request.GET.get('year')
 
-        match = ResultProfile.objects.filter(rollNumber= getRoll).\
-                                    filter(regiNumber=getRegi).\
-                                    filter(className=className).\
-                                    filter(year__year=year)\
-                                    .first()
-        
-        if match:
-            Match_context = {
-                'match':match,
-                
+            context = {
+                'year':Year.objects.all().order_by('-id'),
             }
-            context.update(Match_context)
-        # else :
-        #     noMath = match.none()
+            
 
-        return render(request,'index.html',context)
+            match = ResultProfile.objects.filter(rollNumber= getRoll).\
+                                        filter(regiNumber=getRegi).\
+                                        filter(className=className).\
+                                        filter(year__year=year)\
+                                        .first()
+            
+            if match:
+                Match_context = {
+                    'match':match,
+                    
+                }
+                context.update(Match_context)
+            # else :
+            #     noMath = match.none()
+
+        else:
+            return HttpResponse('No not')
+        return render(request,'home.html',context)
 
     #def post(self,request):
         # getRoll = request.POST.get('roll')
@@ -56,4 +60,4 @@ class GetResultView(View):
 
 
 def Home(request):
-    return render(request,'home.html')
+    return render(request,'index.html')

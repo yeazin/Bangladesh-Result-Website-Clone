@@ -40,9 +40,11 @@ section aside:nth-child(1){
     width: 30%;
     
     border-radius: 10px;
+
+    margin-top:5%;
 }
 
-section aside:nth-child(1) form input{
+section aside:nth-child(1) form input,select {
     width: 85%;
     padding: 10px;
     display: block;
@@ -56,17 +58,24 @@ section aside:nth-child(1) form input:focus{
     border-bottom: 2px solid black;  
 }
 
-select aside:nth-child(1) form select{
+form select option{
+    background-color: rgb(233, 229, 229);
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+/* select aside:nth-child(1) form input select{
     width: 85%;
     padding: 10px;
     display: block;
     background: transparent;
-    /* border: none;    */
-}
+    border: 2px solid black;   
+} */
 
 /*  Section Aside second One */
 
 section aside:nth-child(2){
     width: 70%;
-    background-color: blue;
+    background-color: rgb(210, 210, 241);
 }
